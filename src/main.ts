@@ -22,7 +22,7 @@ async function run(): Promise<void> {
     core.debug("Result: ");
     core.debug(outputText);
 
-    const isTaskCompleted = cleanText.match(/(- \[[ ]\].+)/g) === null;
+    const isTaskCompleted = cleanText.match(/([-*] \[ \].+)/g) === null;
 
     const output = {
       title: appName,

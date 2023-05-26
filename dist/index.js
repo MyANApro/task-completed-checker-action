@@ -55,7 +55,7 @@ function run() {
             const outputText = utils_1.createTaskListText(cleanText);
             core.debug("Result: ");
             core.debug(outputText);
-            const isTaskCompleted = cleanText.match(/(- \[[ ]\].+)/g) === null;
+            const isTaskCompleted = cleanText.match(/([-*] \[ \].+)/g) === null;
             const output = {
                 title: appName,
                 summary: isTaskCompleted
@@ -91,8 +91,8 @@ function removeIgnoreTaskListText(text) {
 }
 exports.removeIgnoreTaskListText = removeIgnoreTaskListText;
 function createTaskListText(body) {
-    const completedTasks = body.match(/(- \[[x]\].+)/g);
-    const uncompletedTasks = body.match(/(- \[[ ]\].+)/g);
+    const completedTasks = body.match(/([-*] \[x\].+)/g);
+    const uncompletedTasks = body.match(/([-*] \[ \].+)/g);
     let text = "";
     if (completedTasks !== null) {
         for (let index = 0; index < completedTasks.length; index++) {
